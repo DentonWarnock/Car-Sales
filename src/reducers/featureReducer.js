@@ -22,8 +22,10 @@ export const initialState = {
           case ADD_FEATURE: 
             return {
                 ...state,
-                additionalPrice: additionalPrice + action.payload.price,
+                additionalPrice: state.additionalPrice + action.payload.price,
                 car: {...state.car, features: [...state.car.features, action.payload]} 
             }
-      }
-  }
+            default: 
+                return state;          
+        }       
+    }
