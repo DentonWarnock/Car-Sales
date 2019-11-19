@@ -13,8 +13,8 @@ const store = createStore(featureReducer);
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
-    <Prover store={store}>
+    <Provider store={store}>
         <App />
-    </Prover>, 
+    </Provider>, 
 rootElement
 );
