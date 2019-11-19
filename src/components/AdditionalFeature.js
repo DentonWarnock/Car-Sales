@@ -7,7 +7,7 @@ import { addFeature } from "../actions";
 const AdditionalFeature = props => {
   const handleAdd = e => {
     e.preventDefault();
-    props.addFeature(props.feature)
+    props.addFeature(props.feature.id)
   }
 
   return (
@@ -25,4 +25,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default AdditionalFeature;
+export default connect(mapStateToProps, { addFeature })(AdditionalFeature);
