@@ -25,9 +25,10 @@ export const initialState = {
                 car: {...state.car, features: [...state.car.features, state.additionalFeatures[action.payload - 1]]}
             }
             case REMOVE_FEATURE: 
+                console.log("featureReducer.js: REMOVE_FEATURE: action.payload :", action.payload)
                 return {
                     ...state,
-                    car: {...state.car, features: [state.car.features.filter(item => item ==! action.payload)]}
+                    car: {...state.car, features: state.car.features.filter(item => item.id !== action.payload)}
                 }
             case UPDATE_PRICE:
                 return {
@@ -36,7 +37,7 @@ export const initialState = {
                         return total + value.price;
                     }, 0)
                 }
-            default: 
-                return state;          
+            default:
+                return state;
         }       
     }

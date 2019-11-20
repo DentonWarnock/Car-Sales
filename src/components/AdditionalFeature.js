@@ -30,4 +30,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { addFeature, updatePrice })(AdditionalFeature);
+export default connect(null, { addFeature, updatePrice })(AdditionalFeature);
