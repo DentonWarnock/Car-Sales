@@ -34,7 +34,10 @@ export const initialState = {
                 console.log("featureReducer.js: REMOVE_FEATURE: action.payload :", action.payload)
                 return {
                     ...state,
-                    car: {...state.car, features: state.car.features.filter(item => item.id !== action.payload)}
+                    car: {
+                        ...state.car, 
+                        features: state.car.features.filter(item => item.id !== action.payload)
+                    }
                 }
             case UPDATE_PRICE:
                 return {
