@@ -47,3 +47,15 @@ body {
     color: #333;
   }
 }
+
+.added {
+  border: 1px solid red;
+  border-radius: 5px;
+  color: red;
+  margin-right: 0.5em;
+  padding: .25em .75em;
+}
+
+.fully-loaded {
+  color: red;
+}

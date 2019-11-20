@@ -3,6 +3,13 @@ import AdditionalFeature from './AdditionalFeature';
 import { connect } from "react-redux";
 
 const AdditionalFeatures = props => {
+
+  const allAdded = () => {
+    if (props.featuresList.length >= 4) {
+      return <div className="fully-loaded"><b>All Features Added! Vehicle is Fully Loaded!</b></div>
+    }
+  }
+
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -15,13 +22,15 @@ const AdditionalFeatures = props => {
       ) : (
         <p>Nice looking car!</p>
       )}
+      {allAdded()}
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    additionalFeatures: state.additionalFeatures
+    featuresList: state.car.features,
+    additionalFeatures: state.additionalFeatures    
   }
 }
 

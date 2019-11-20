@@ -13,6 +13,7 @@ const Total = props => {
 };
 
 const mapStateToProps = state => {
+  console.log("total, state :", state);
   return {
     car: state.car,
     additionalPrice: state.additionalPrice

@@ -13,21 +13,32 @@ const AdditionalFeature = props => {
     console.log(props.feature.price);
   }
 
+  const conditionalButton = () => {
+    return !props.featuresList.includes(props.feature) ? 
+      <button className="button" onClick={handleAdd} value={props.feature.id}>Add</button> 
+      : 
+      <div className={"added"}><b>Added!</b></div>;
+  }
+
+
   return (
-    <li>
-      {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button" onClick={handleAdd} value={props.feature.id}>Add</button>
-      {props.feature.name} (+{props.feature.price})
-    </li>
+    <>
+      <li>
+        {/* Add an onClick that will let you add a feature to your car */}
+        {conditionalButton()}      
+        {/* <button className="button" onClick={handleAdd} value={props.feature.id}>Add</button> */}
+        {props.feature.name} (+{props.feature.price})
+      </li>     
+    </>
   );
 };
 
 const mapStateToProps = state => {
   return {
     // additionalPrice: state.additionalPrice,
-    // car: state.car,
-    // feature: state.car.feature
+    car: state.car,
+    featuresList: state.car.features
   }
 }
 
-export default connect(null, { addFeature, updatePrice })(AdditionalFeature);
+export default connect(mapStateToProps, { addFeature, updatePrice })(AdditionalFeature);

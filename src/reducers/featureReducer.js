@@ -22,7 +22,13 @@ export const initialState = {
           case ADD_FEATURE: 
             return {
                 ...state,                
-                car: {...state.car, features: [...state.car.features, state.additionalFeatures[action.payload - 1]]}
+                car: {
+                    ...state.car, 
+                    features: [
+                        ...state.car.features, 
+                        state.additionalFeatures[action.payload - 1]
+                    ]
+                }
             }
             case REMOVE_FEATURE: 
                 console.log("featureReducer.js: REMOVE_FEATURE: action.payload :", action.payload)
