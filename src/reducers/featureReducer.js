@@ -22,7 +22,7 @@ export const initialState = {
           case ADD_FEATURE: 
             return {
                 ...state,                
-                car: {...state.car, features: [...state.car.features, action.payload]} 
+                car: {...state.car, features: [...state.car.features, state.additionalFeatures[action.payload - 1]]}
             }
             case REMOVE_FEATURE: 
                 return {
@@ -32,7 +32,9 @@ export const initialState = {
             case UPDATE_PRICE:
                 return {
                     ...state,
-                    additionalPrice: state.additionalPrice + action.payload.price
+                    additionalPrice: state.car.features.reduce((total, value) => {
+                        return total + value.price;
+                    }, 0)
                 }
             default: 
                 return state;          

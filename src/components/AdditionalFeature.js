@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { addFeature } from "../actions";
+import { addFeature, updatePrice } from "../actions";
 
 
 const AdditionalFeature = props => {
 
   const handleAdd = e => {
     e.preventDefault();
-    props.addFeature(e.target.value)
+    props.addFeature(e.target.value);
+    props.updatePrice();
     console.log(e.target.value);
-    console.log(props);
+    console.log(props.feature.price);
   }
 
   return (
@@ -23,10 +24,10 @@ const AdditionalFeature = props => {
 
 const mapStateToProps = state => {
   return {
-    additionalPrice: state.additionalPrice,
-    car: state.car,
+    // additionalPrice: state.additionalPrice,
+    // car: state.car,
     // feature: state.car.feature
   }
 }
 
-export default connect(mapStateToProps, { addFeature })(AdditionalFeature);
+export default connect(mapStateToProps, { addFeature, updatePrice })(AdditionalFeature);
