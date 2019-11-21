@@ -26,7 +26,7 @@ export const initialState = {
                     ...state.car, 
                     features: [
                         ...state.car.features, 
-                        state.additionalFeatures[action.payload - 1]
+                        action.payload
                     ]
                 }
             }

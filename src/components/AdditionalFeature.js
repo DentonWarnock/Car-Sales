@@ -7,26 +7,21 @@ const AdditionalFeature = props => {
 
   const handleAdd = e => {
     e.preventDefault();
-    props.addFeature(e.target.value);
+    props.addFeature(props.feature);
     props.updatePrice();
-    console.log(e.target.value);
-    console.log(props.feature.price);
   }
 
   const conditionalButton = () => {
     return !props.featuresList.includes(props.feature) ? 
-      <button className="button" onClick={handleAdd} value={props.feature.id}>Add</button> 
+      <button className="button" onClick={handleAdd}>Add</button> 
       : 
       <div className={"added"}><b>Added!</b></div>;
   }
 
-
   return (
     <>
-      <li>
-        {/* Add an onClick that will let you add a feature to your car */}
-        {conditionalButton()}      
-        {/* <button className="button" onClick={handleAdd} value={props.feature.id}>Add</button> */}
+      <li>        
+        {conditionalButton()}        
         {props.feature.name} (+{props.feature.price})
       </li>     
     </>
