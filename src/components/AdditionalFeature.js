@@ -1,13 +1,38 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { addFeature, updatePrice } from "../actions";
+
 
 const AdditionalFeature = props => {
+
+  const handleAdd = e => {
+    e.preventDefault();
+    props.addFeature(props.feature);
+    props.updatePrice();
+  }
+
+  const conditionalButton = () => {
+    return !props.featuresList.includes(props.feature) ? 
+      <button className="button" onClick={handleAdd}>Add</button> 
+      : 
+      <div className={"added"}><b>Added!</b></div>;
+  }
+
   return (
-    <li>
-      {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button">Add</button>
-      {props.feature.name} (+{props.feature.price})
-    </li>
+    <>
+      <li>        
+        {conditionalButton()}        
+        {props.feature.name} (+{props.feature.price})
+      </li>     
+    </>
   );
 };
 
-export default AdditionalFeature;
+const mapStateToProps = state => {
+  return {
+    car: state.car,
+    featuresList: state.car.features
+  }
+}
+
+export default connect(mapStateToProps, { addFeature, updatePrice })(AdditionalFeature);
